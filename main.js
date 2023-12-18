@@ -97,6 +97,8 @@ $limparCampos.addEventListener('click', function () {
     $estado.value = '';
     $emai.value = '';
     $confEmail.value = '';
+    $errorNom.textContent  ='';
+    $errorRFC.textContent = '';
 
 })
 
