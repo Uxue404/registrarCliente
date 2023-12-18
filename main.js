@@ -1,3 +1,30 @@
+//LLAMADA DE TODOS LOS CAMPOS Y BOTONES
+let $rfc = document.getElementById('rfc');
+let $tipoPersona = document.getElementById('tipoPersona');
+let $nomb = document.getElementById('nombre');
+
+let $calle = document.getElementById('calle');
+let $numInt = document.getElementById('numInt')
+let $codigoPostal = document.getElementById('codigoPostal');
+let $colonia = document.getElementById('colonia');
+let $municipio = document.getElementById('municipio');
+let $estado = document.getElementById('estado')
+
+let $emai = document.getElementById('email')
+let $confEmail = document.getElementById('confirmarEmail');
+
+let $limparCampos = document.getElementById('limpiar')
+let $registrar = document.getElementById('registrar');
+
+let $errorRFC = document.getElementById('errorRFC')
+let $errorCombo = document.getElementById('errorCombo')
+let $errorNom = document.getElementById('errorNom');
+
+
+// Expresión regular para validar RFC
+const rfcRegex = /^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/;
+
+//Arreglos de comboBOx
 let codigos = [
     "08000", "08010", "08020", "08030", "08040",
     "08100", "08200", "08210", "08220", "08230",
@@ -22,21 +49,15 @@ let colonias = [
 ];
 
 let municipio = ["Iztacalco"];
+
 let estado = ["CDMX"];
+
 let tipoPersona = ["Fisica", "Moral"];
 
 
 
 
-
-let $codigoPostal = document.getElementById('codigoPostal');
-let $colonia = document.getElementById('colonia');
-let $municipio = document.getElementById('municipio');
-let $estado = document.getElementById('estado')
-let $tipoPersona = document.getElementById('tipoPersona')
-let $limparCampos = document.getElementById('limpiar')
-
-function mostrarCodigos(arreglo, lugar) {
+function mostrarComboBox(arreglo, lugar) {
     let elementos = '<option selected disabled> -- Seleccione -- </option>'
 
     for (let i = 0; i < arreglo.length; i++) {
@@ -44,32 +65,72 @@ function mostrarCodigos(arreglo, lugar) {
     }
     lugar.innerHTML = elementos
 }
-mostrarCodigos(tipoPersona, $tipoPersona)
-mostrarCodigos(codigos, $codigoPostal);
+mostrarComboBox(tipoPersona, $tipoPersona)
+mostrarComboBox(codigos, $codigoPostal);
 
 console.log(codigos.length)
 $codigoPostal.addEventListener('change', function () {
     let posicion = codigos.indexOf($codigoPostal.value);
     if (posicion !== -1) {
         let coloniaSelect = colonias[posicion];
-        mostrarCodigos([coloniaSelect], $colonia);
-        mostrarCodigos([municipio[0]], $municipio)
-        mostrarCodigos([estado[0]], $estado);
+        mostrarComboBox([coloniaSelect], $colonia);
+        mostrarComboBox([municipio[0]], $municipio)
+        mostrarComboBox([estado[0]], $estado);
 
     } else {
-        mostrarCodigos([], $colonia)
-        mostrarCodigos([], $municipio)
-        mostrarCodigos([], $estado);
+        mostrarComboBox([], $colonia)
+        mostrarComboBox([], $municipio)
+        mostrarComboBox([], $estado);
 
     }
 })
 
 
 $limparCampos.addEventListener('click', function () {
-    $codigoPostal.value = '';
+    $rfc.value = '';
+    $tipoPersona.selectedIndex = 0;
+    $nomb.value = '';
+    $calle.value = ''
+    $codigoPostal.selectedIndex = 0;
     $colonia.value = '';
     $municipio.value = '';
     $estado.value = '';
+    $emai.value = '';
+    $confEmail.value = '';
 
 })
+
+function validarPersona() {
+    if ($tipoPersona.value === null) {
+        alert("Selecciona una opción en Tipo de Persona.");
+        return false
+    }
+    return true
+}
+
+function validarRFC() {
+    if (rfcRegex.test($rfc.value.toUpperCase())) {
+        // El RFC es válido
+        $errorRFC.textContent = '';
+        return true
+    } else {
+        // El RFC no es válido
+        $errorRFC.textContent = 'RFC inválido.';
+        return false
+    }
+}
+
+function validarNombre() {
+    if ($nomb.value.trim() === '') {
+        $errorNom.textContent = 'Llena el campo'
+        return false
+    }
+    return true
+}
+
+$registrar.addEventListener('click', function () {
+    validarRFC();
+    validarNombre();
+
+});
 

@@ -582,16 +582,12 @@ video {
   height: 3rem;
 }
 
-.h-\[40px\] {
-  height: 40px;
-}
-
 .h-screen {
   height: 100vh;
 }
 
-.w-64 {
-  width: 16rem;
+.w-40 {
+  width: 10rem;
 }
 
 .w-\[90\%\] {
@@ -602,10 +598,6 @@ video {
   width: 100%;
 }
 
-.w-40 {
-  width: 10rem;
-}
-
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -614,10 +606,6 @@ video {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-}
-
-.flex-row {
-  flex-direction: row;
 }
 
 .flex-col {
@@ -697,19 +685,9 @@ video {
   line-height: 1.5rem;
 }
 
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .font-extrabold {
@@ -727,6 +705,11 @@ video {
 .text-seagull-300 {
   --tw-text-opacity: 1;
   color: rgb(83 203 234 / var(--tw-text-opacity));
+}
+
+.text-pink-500 {
+  --tw-text-opacity: 1;
+  color: rgb(236 72 153 / var(--tw-text-opacity));
 }
 
 .outline-none {
@@ -796,34 +779,16 @@ video {
     max-width: 64rem;
   }
 
-  .md\:flex-row {
-    flex-direction: row;
-  }
-
   .md\:items-center {
     align-items: center;
-  }
-
-  .md\:justify-start {
-    justify-content: flex-start;
   }
 
   .md\:justify-end {
     justify-content: flex-end;
   }
 
-  .md\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
-  }
-
-  .md\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
   }
 }
