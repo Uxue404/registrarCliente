@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lekton&display=swap" rel="stylesheet">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link href="/dist/output.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class=" font-Lekton font-extrabold text-base bg-seagull-50 h-screen flex items-center justify-center ">
+
+    <form
+        class="text-xs flex flex-col w-[90%] m-auto rounded-xl bg-white px-10 drop-shadow-2xl sm:max-w-[75%] md:max-w-5xl md:text-base">
+
+        <!-- DATOS FISCALES -->
+        <section class="my-4">
+            <div class="flex">
+                <div class=" flex-1 mr-2 flex flex-col">
+                    <label for="">RFC</label>
+                    <input type="text" placeholder="AAAA123456BCD"
+                        class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 font-extralight">
+                </div>
+                <div class="flex-1 mr-2 flex flex-col">
+                    <label for="">TIPO PERSONA</label>
+                    <select type="text" id="tipoPersona"
+                        class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 text-center appearance-none font-extralight"></select>
+                </div>
+            </div>
+            <div>
+                <label for="">RAZON SOCIAL</label>
+                <input type="text"
+                    class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600">
+            </div>
+        </section>
+
+        <!-- DATOS DOMICILIO -->
+        <section class="my-4">
+            <div class="md:flex ">
+                <div class="flex flex-col md:w-[70%] sm:mr-2">
+                    <label for="">CALLE</label>
+                    <input type="text"
+                        class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 ">
+                </div>
+                <div class="flex ">
+                    <div class="flex-1 mr-2 flex flex-col md:w-[15%] sm:ml-2">
+                        <label for="">NUM EXT</label>
+                        <input type="number"
+                            class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 ">
+                    </div>
+                    <div class="flex-1 ml-2 flex flex-col md:w-[15%]">
+                        <label for="">NUM INT</label>
+                        <input type="number"
+                            class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex">
+                <div class="flex-1 mr-2 flex flex-col ">
+                    <label for="">CP</label>
+                    <select id="codigoPostal" name="codigoPostal"
+                        class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 text-center appearance-none font-extralight">
+
+                    </select>
+                </div>
+                <div class="flex-1 ml-2 flex flex-col ">
+                    <label for="">COLONIA</label>
+                    <select name="" id="colonia" name="colonia"
+                        class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 text-center appearance-none font-extralight">
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex">
+                <div class="flex-1 mr-2 flex flex-col">
+                    <label for="">MUNICIPIO</label>
+                    <select name="" id="municipio"
+                        class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 text-center appearance-none font-extralight">
+
+                    </select>
+                </div>
+                <div class="flex-1 ml-2 flex flex-col ">
+                    <label for="">ESTADO</label>
+                    <select name="" id="estado"
+                        class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 text-center appearance-none font-extralight">
+
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- DATOS CORREO -->
+        <section class="my-4">
+            <div class="flex flex-col">
+                <label for="">CORREO</label>
+                <input type="email" placeholder="email@email.com"
+                    class="peer w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 font-extralight">
+
+            </div>
+            <div class="flex flex-col">
+                <label for="">CONFIRMAR CORREO</label>
+                <input type="email" placeholder="email@email.com"
+                    class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 font-extralight">
+            </div>
+        </section>
+
+        <!-- BOTONES -->
+        <section class="my-4 flex justify-center md:justify-end md:items-center">
+            <button id="limpiar"
+                class="text-seagull-300 border rounded-2xl  font-semibold border-seagull-300 h-12 w-40 mb-2 mr-6  hover:drop-shadow-2xl">LIMPIAR</button>
+            <button
+                class="bg-seagull-400 rounded-2xl h-12 w-40 mb-2 mr-6 ml-6 font-semibold hover:bg-seagull-300 hover:drop-shadow-2xl">REGISTRAR</button>
+
+
+        </section>
+
+    </form>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
