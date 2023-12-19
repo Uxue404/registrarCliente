@@ -30,7 +30,7 @@
                     <label for="">TIPO PERSONA</label>
                     <select type="text" id="tipoPersona"
                         class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 text-center appearance-none font-extralight"></select>
-                    <p id="errorCombo" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
+                    <p id="errorPersona" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
                 </div>
             </div>
             <div>
@@ -48,17 +48,20 @@
                     <label for="">CALLE</label>
                     <input type="text" id="calle"
                         class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 ">
+                    <p id="errorCalle" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
                 </div>
                 <div class="flex ">
                     <div class="flex-1 mr-2 flex flex-col md:w-[15%] sm:ml-2">
                         <label for="">NUM EXT</label>
                         <input type="number" id="numExt"
                             class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 ">
+                        <p id="errorNumExt" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
                     </div>
                     <div class="flex-1 ml-2 flex flex-col md:w-[15%]">
                         <label for="">NUM INT</label>
                         <input type="number" id="numInt"
                             class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600">
+                        <p id="errorNumInt" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
                     </div>
                 </div>
             </div>
@@ -68,14 +71,14 @@
                     <label for="">CP</label>
                     <select id="codigoPostal" name="codigoPostal"
                         class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 text-center appearance-none font-extralight">
-
                     </select>
+                    <p id="errorCP" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
                 </div>
                 <div class="flex-1 ml-2 flex flex-col ">
                     <label for="">COLONIA</label>
                     <select name="" id="colonia" name="colonia"
                         class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 text-center appearance-none font-extralight">
-
+                        <p id="errorColonia" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
                     </select>
                 </div>
             </div>
@@ -85,8 +88,8 @@
                     <label for="">MUNICIPIO</label>
                     <select name="" id="municipio"
                         class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 text-center appearance-none font-extralight">
-
                     </select>
+                    <p id="errorMunicipio" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
                 </div>
                 <div class="flex-1 ml-2 flex flex-col ">
                     <label for="">ESTADO</label>
@@ -94,6 +97,7 @@
                         class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 text-center appearance-none font-extralight">
 
                     </select>
+                    <p id="errorEstado" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
                 </div>
             </div>
         </section>
@@ -104,12 +108,13 @@
                 <label for="">CORREO</label>
                 <input type="email" placeholder="email@email.com" id="email"
                     class="peer w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 font-extralight">
-
+                <p id="errorCorreo" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
             </div>
             <div class="flex flex-col">
                 <label for="">CONFIRMAR CORREO</label>
                 <input type="email" placeholder="email@email.com" id="confirmarEmail"
                     class="w-full my-3 border border-seagull-200 rounded-xl py-3 px-3 focus:border-seagull-600 outline-none focus:ring-2 focus:ring-seagull-600 font-extralight">
+                <p id="errorConfCorreo" class="font-extrabold text-xs mb-2 text-center text-pink-500"></p>
             </div>
         </section>
 

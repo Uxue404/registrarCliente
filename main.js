@@ -4,6 +4,7 @@ let $tipoPersona = document.getElementById('tipoPersona');
 let $nomb = document.getElementById('nombre');
 
 let $calle = document.getElementById('calle');
+let $numExt = document.getElementById('numExt');
 let $numInt = document.getElementById('numInt')
 let $codigoPostal = document.getElementById('codigoPostal');
 let $colonia = document.getElementById('colonia');
@@ -16,13 +17,24 @@ let $confEmail = document.getElementById('confirmarEmail');
 let $limparCampos = document.getElementById('limpiar')
 let $registrar = document.getElementById('registrar');
 
-let $errorRFC = document.getElementById('errorRFC')
-let $errorCombo = document.getElementById('errorCombo')
+let $errorRFC = document.getElementById('errorRFC');
+let $errorPersona = document.getElementById('errorPersona');
 let $errorNom = document.getElementById('errorNom');
+let $errorCalle = document.getElementById('errorCalle');
+let $errorNumExt = document.getElementById('errorNumExt');
+let $errorNumInt = document.getElementById('errorNumInt');
+let $errorCP = document.getElementById('errorCP');
+let $errorColonia = document.getElementById('errorColonia');
+let $errorMunicipio = document.getElementById('errorMunicipio');
+let $errorEstado = document.getElementById('errorEstado');
+let $errorCorreo = document.getElementById('errorCorreo');
+let $errorConfCorreo = document.getElementById('errorConfCorreo');
 
 
 // Expresión regular para validar RFC
 const rfcRegex = /^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/;
+
+const emailRegex = /^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}$/
 
 //Arreglos de comboBOx
 let codigos = [
@@ -58,7 +70,7 @@ let tipoPersona = ["Fisica", "Moral"];
 
 
 function mostrarComboBox(arreglo, lugar) {
-    let elementos = '<option selected disabled> -- Seleccione -- </option>'
+    let elementos = '<option value="" selected disabled> -- Seleccione -- </option>'
 
     for (let i = 0; i < arreglo.length; i++) {
         elementos += '<option value="' + arreglo[i] + '">' + arreglo[i] + '</option>'
@@ -97,14 +109,21 @@ $limparCampos.addEventListener('click', function () {
     $estado.value = '';
     $emai.value = '';
     $confEmail.value = '';
-    $errorNom.textContent  ='';
+    $errorPersona.textContent = '';
+    $errorNom.textContent = '';
     $errorRFC.textContent = '';
+    $errorCalle.textContent = '';
+    $errorNumExt.textContent = '';
+    $errorCP.textContent = '';
+    $errorCorreo.textContent = '';
+    $errorConfCorreo.textContent = '';
 
 })
 
-function validarPersona() {
-    if ($tipoPersona.value === null) {
-        alert("Selecciona una opción en Tipo de Persona.");
+function validarCombo(elemento, mensajeError, elementoError) {
+    if (elemento.value === "") {
+        elementoError.textContent = mensajeError;
+        console.log(mensajeError);
         return false
     }
     return true
@@ -122,17 +141,48 @@ function validarRFC() {
     }
 }
 
-function validarNombre() {
-    if ($nomb.value.trim() === '') {
-        $errorNom.textContent = 'Llena el campo'
+function validarEmail(elemento, error) {
+    if (emailRegex.test(elemento.value)) {
+        return true
+    }
+    else {
+        error.textContent = "Email invalido";
+        return false
+    }
+}
+
+function validarCampo(elemto, mensajeError, elementoError) {
+    if (elemto.value.trim() === '') {
+        elementoError.textContent = mensajeError;
         return false
     }
     return true
 }
 
+function validarCorreos() {
+    if ($emai.value === $confEmail.value) {
+        return true
+    }
+    else {
+        $errorConfCorreo.textContent = "Los correos no coinciden"
+        return false
+    }
+}
+
 $registrar.addEventListener('click', function () {
     validarRFC();
-    validarNombre();
+    validarCampo($nomb, "Ingresa Razon social", $errorNom);
+    validarCombo($tipoPersona, "Seleccione tipo persona", $errorPersona);
+
+    validarCampo($calle, "Ingresa una calle", $errorCalle);
+    validarCampo($numExt, "Ingresa un numero ", $errorNumExt);
+    validarCombo($codigoPostal, "Seleccione CP", $errorCP);
+
+
+
+    validarEmail($emai, $errorCorreo);
+    validarEmail($confEmail, $errorConfCorreo)
+    validarCorreos();
 
 });
 
