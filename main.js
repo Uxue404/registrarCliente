@@ -207,12 +207,7 @@ $registrar.addEventListener('click', function () {
     if (!validarCampos) {
         alert('Hay errores en el formulario. Revise los campos')
     } else {
-        setTimeout(function () {
-
-
-            window.location.href = 'clienteRegistrado.html'
-        }, 500);
-        limpiarInputs()
+        alert('Registro Exitoso')
     }
 
 });
