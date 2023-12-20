@@ -104,7 +104,8 @@ function limpiarInputs() {
     $calle.value = ''
     $numExt.value = ''
     $numInt.value = ''
-    $codigoPostal.selectedIndex = 0;
+    $codigoPostal.selectedIndex = -1;
+
     $colonia.value = '';
     $municipio.value = '';
     $estado.value = '';
@@ -132,6 +133,7 @@ function validarCombo(elemento, mensajeError, elementoError) {
         elementoError.textContent = mensajeError;
         return false;
     }
+    elementoError.textContent = '';
     return true
 }
 
@@ -149,6 +151,7 @@ function validarRFC() {
 
 function validarEmail(elemento, error) {
     if (emailRegex.test(elemento.value)) {
+        elementoError.textContent = '';
         return true
     }
     else {
@@ -172,12 +175,13 @@ function validarCampo(elemto, mensajeError, elementoError) {
             return false;
         }
     }
-
+    elementoError.textContent = '';
     return true
 }
 
 function validarCorreos() {
     if ($emai.value === $confEmail.value) {
+        $errorConfCorreo.textContent = '';
         return true
     }
     else {
@@ -193,7 +197,7 @@ function mayus(e) {
 $registrar.addEventListener('click', function () {
     const validarCampos =
         validarRFC() &&
-        validarCombo($tipoPersona, "Seleccione tipo persona", $errorPersona) && 
+        validarCombo($tipoPersona, "Seleccione tipo persona", $errorPersona) &&
         validarCampo($nomb, "Ingresa Razon social", $errorNom) &&
         validarCampo($calle, "Ingresa una calle", $errorCalle) &&
         validarCampo($numExt, "Ingresa un numero ", $errorNumExt) &&
@@ -210,6 +214,7 @@ $registrar.addEventListener('click', function () {
         alert('Hay errores en el formulario. Revise los campos')
     } else {
         alert('Registro Exitoso')
+        limpiarInputs();
     }
 
 });
