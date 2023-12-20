@@ -193,8 +193,8 @@ function mayus(e) {
 $registrar.addEventListener('click', function () {
     const validarCampos =
         validarRFC() &&
+        validarCombo($tipoPersona, "Seleccione tipo persona", $errorPersona) && 
         validarCampo($nomb, "Ingresa Razon social", $errorNom) &&
-        validarCombo($tipoPersona, "Seleccione tipo persona", $errorPersona) &&
         validarCampo($calle, "Ingresa una calle", $errorCalle) &&
         validarCampo($numExt, "Ingresa un numero ", $errorNumExt) &&
         validarCampo($numInt, "", $errorNumInt) &&
