@@ -97,12 +97,13 @@ $codigoPostal.addEventListener('change', function () {
     }
 })
 
-
-$limparCampos.addEventListener('click', function () {
+function limpiarInputs() {
     $rfc.value = '';
     $tipoPersona.selectedIndex = 0;
     $nomb.value = '';
     $calle.value = ''
+    $numExt.value = ''
+    $numInt.value = ''
     $codigoPostal.selectedIndex = 0;
     $colonia.value = '';
     $municipio.value = '';
@@ -114,17 +115,22 @@ $limparCampos.addEventListener('click', function () {
     $errorRFC.textContent = '';
     $errorCalle.textContent = '';
     $errorNumExt.textContent = '';
+    $errorNumInt.textContent = '';
     $errorCP.textContent = '';
+    $errorColonia.textContent = '';
+    $errorMunicipio.textContent = '';
+    $errorEstado.textContent = '';
     $errorCorreo.textContent = '';
     $errorConfCorreo.textContent = '';
+}
 
-})
+$limparCampos.addEventListener('click', limpiarInputs);
 
 function validarCombo(elemento, mensajeError, elementoError) {
-    if (elemento.value === "") {
+
+    if (!elemento || !elemento.value) {
         elementoError.textContent = mensajeError;
-        console.log(mensajeError);
-        return false
+        return false;
     }
     return true
 }
@@ -152,10 +158,21 @@ function validarEmail(elemento, error) {
 }
 
 function validarCampo(elemto, mensajeError, elementoError) {
+
     if (elemto.value.trim() === '') {
         elementoError.textContent = mensajeError;
         return false
     }
+
+    if (elemto.type === 'number') {
+
+        const valorNumerico = parseFloat(elemto.value);
+        if (isNaN(valorNumerico) || valorNumerico <= 0 || valorNumerico > 1000) {
+            elementoError.textContent = 'Ingrese un número válido entre 0 y 1000.';
+            return false;
+        }
+    }
+
     return true
 }
 
@@ -169,20 +186,34 @@ function validarCorreos() {
     }
 }
 
+
+
 $registrar.addEventListener('click', function () {
-    validarRFC();
-    validarCampo($nomb, "Ingresa Razon social", $errorNom);
-    validarCombo($tipoPersona, "Seleccione tipo persona", $errorPersona);
+    const validarCampos =
+        validarRFC() &&
+        validarCampo($nomb, "Ingresa Razon social", $errorNom) &&
+        validarCombo($tipoPersona, "Seleccione tipo persona", $errorPersona) &&
+        validarCampo($calle, "Ingresa una calle", $errorCalle) &&
+        validarCampo($numExt, "Ingresa un numero ", $errorNumExt) &&
+        validarCampo($numInt, "", $errorNumInt) &&
+        validarCombo($codigoPostal, "Seleccione CP", $errorCP) &&
+        validarCombo($colonia, "Seleccione una colonia", $errorColonia) &&
+        validarCombo($municipio, "Seleccione un munucipio", $errorMunicipio) &&
+        validarCombo($estado, "Seleccione un estado", $errorEstado) &&
+        validarEmail($emai, $errorCorreo) &&
+        validarEmail($confEmail, $errorConfCorreo) &&
+        validarCorreos();
 
-    validarCampo($calle, "Ingresa una calle", $errorCalle);
-    validarCampo($numExt, "Ingresa un numero ", $errorNumExt);
-    validarCombo($codigoPostal, "Seleccione CP", $errorCP);
+    if (!validarCampos) {
+        alert('Hay errores en el formulario. Revise los campos')
+    } else {
+        setTimeout(function () {
 
 
-
-    validarEmail($emai, $errorCorreo);
-    validarEmail($confEmail, $errorConfCorreo)
-    validarCorreos();
+            window.location.href = 'clienteRegistrado.html'
+        }, 500);
+        limpiarInputs()
+    }
 
 });
 
