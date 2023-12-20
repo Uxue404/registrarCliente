@@ -186,7 +186,9 @@ function validarCorreos() {
     }
 }
 
-
+function mayus(e) {
+    e.value = e.value.toUpperCase();
+}
 
 $registrar.addEventListener('click', function () {
     const validarCampos =
