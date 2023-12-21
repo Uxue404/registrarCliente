@@ -151,7 +151,7 @@ function validarRFC() {
 
 function validarEmail(elemento, error) {
     if (emailRegex.test(elemento.value)) {
-        elementoError.textContent = '';
+        error.textContent = '';
         return true
     }
     else {
